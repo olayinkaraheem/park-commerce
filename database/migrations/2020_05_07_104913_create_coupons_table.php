@@ -17,10 +17,10 @@ class CreateCouponsTable extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->integer('min_items');
-            $table->float('min_price', 8, 2);
+            $table->integer('min_price');
             $table->integer('coupon_type');
             $table->integer('percentage_off');
-            $table->float('price_off', 8, 2);
+            $table->integer('price_off');
             $table->integer('is_active');
             $table->timestamp('valid_till');
             $table->timestamps();
