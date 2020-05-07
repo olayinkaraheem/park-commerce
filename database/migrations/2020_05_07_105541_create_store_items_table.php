@@ -20,7 +20,7 @@ class CreateStoreItemsTable extends Migration
             $table->integer('price');
             $table->integer('in_stock');
             $table->string('image_url');
-            $table->integer('is_deleted');
+            $table->integer('is_deleted')->default(0);
             $table->timestamps();
         });
     }
