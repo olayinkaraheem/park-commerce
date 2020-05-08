@@ -28,7 +28,7 @@ class CouponTypeSeeder extends Seeder
             'type' => 3,
         ]);
         DB::table('coupon_types')->insert([
-            'title' => 'Reject',
+            'title' => 'Rejected',
             'description' => 'Coupon type with discount of both fixed price and  percentage off the total price.',
             'type' => 4,
         ]);
