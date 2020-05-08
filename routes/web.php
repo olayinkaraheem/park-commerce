@@ -22,3 +22,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/cart', 'CartController@index')->name('cart');
+
+Route::post('/cart/process-coupon', 'CouponController@process')->name('coupon.process');
