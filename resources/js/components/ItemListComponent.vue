@@ -1,11 +1,11 @@
 <template>
     <div class="col-12 col-lg-8">
 
-        <table class="table table-cart">
-            <tbody valign="middle" v-if="listItems">
+        <table class="table table-cart" v-if="listItems.length">
+            <tbody valign="middle">
                 <tr v-for="(item, key) in listItems" :key="item.id">
                     <td>
-                        <a class="item-remove" href="#"><i class="ti-close"></i></a>
+                        <a class="item-remove" href="#" @click="handleDelete(item.id, key)"><i class="ti-close"></i></a>
                     </td>
                     
                     <td>
@@ -31,12 +31,15 @@
             </tbody>
         </table>
 
+        <div class="text-center" v-else>Your cart is empty. Add from items below.</div>
+
     </div>
 </template>
 
 <script>
 
 import { store as centralStore } from "../store";
+import Axios from 'axios'
 
 export default {
 
@@ -44,7 +47,7 @@ export default {
     
     data() {
         return {
-            stateStore: centralStore,
+            storeState: centralStore,
             listItems: JSON.parse(this.list_items)
         }
     },
@@ -55,16 +58,34 @@ export default {
             this.updatePrice()
         },
         updatePrice() {
-            const total = this.listItems.reduce( (currentItem, nextItem) => {
-                return currentItem.storeitem.price*currentItem.quantity + nextItem.storeitem.price*nextItem.quantity
+            const total = this.storeState.state.listItems.reduce( (currentSum, nextItem, ind, arr) => {
+                return currentSum + nextItem.storeitem.price*nextItem.quantity
+            }, 0)
+
+            this.storeState.state.total = total
+        },
+        handleDelete(itemId, key) {
+            console.log(itemId, key)
+            Axios.get(`/cart/${itemId}`)
+            .then( resp => {
+                console.log(resp)
+                this.storeState.state.listItems.splice(key, 1)
+            })
+            .catch( err => {
+                console.log( err.response )
             } )
 
-            this.stateStore.state.total = total
+            this.updatePrice()
         }
     },
 
     mounted() {
-        this.stateStore.state.listItems = this.listItems
+        this.storeState.state.listItems = this.listItems
+        this.updatePrice()
+    },
+
+    updated() {
+        this.listItems = this.storeState.state.listItems
         this.updatePrice()
     }
 }

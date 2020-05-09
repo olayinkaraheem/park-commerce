@@ -22,5 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/cart', 'CartController@index')->name('cart')->middleware('auth');
+Route::post('/cart/add', 'CartController@store')->name('cart.store')->middleware('auth');
+Route::get('/cart/{item}', 'CartController@remove')->name('cart.delete')->middleware('auth');
 
 Route::post('/cart/process-coupon', 'CouponController@process')->name('coupon.process');
