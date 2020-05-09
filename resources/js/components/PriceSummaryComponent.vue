@@ -71,7 +71,7 @@ export default {
                 }
                 window.setTimeout(() => {
                     this.message = ''
-                }, 2500)
+                }, 2000)
             })
             .catch( error => {
                 const response = error.response.data;
@@ -81,7 +81,7 @@ export default {
                 // console.log(this.errors)
                 window.setTimeout(() => {
                     this.errors = ''
-                }, 2500)
+                }, 2000)
 
 
             })
@@ -90,6 +90,11 @@ export default {
 
 
     mounted() {
+        // console.log('PriceSummaryComponent Mounted')
+    },
+
+    updated() {
+        // console.log('PriceSummaryComponent Updated')
     },
 
     computed: {

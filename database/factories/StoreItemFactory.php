@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 $factory->define(StoreItem::class, function (Faker $faker) {
 
-    $last_id = DB::table('store_items')->latest()->first()->id;
+    $last_id = DB::table('store_items')->latest()->first()->id ?? null;
     $item_name_end = is_numeric($last_id) ? ++$last_id : 1;
     return [
         'name' => 'Product '. $item_name_end,

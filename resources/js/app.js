@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('cart-items-component', require('./components/ItemListComponent.vue').default);
 Vue.component('cart-price-summary-component', require('./components/PriceSummaryComponent.vue').default);
+Vue.component('store-items-component', require('./components/StoreItemsComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
