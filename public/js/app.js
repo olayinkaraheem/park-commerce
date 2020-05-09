@@ -2093,6 +2093,10 @@ __webpack_require__.r(__webpack_exports__);
         var response = error.response.data;
         _this.newTotal = response.data;
         _this.errors = response.message; // console.log(this.errors)
+
+        window.setTimeout(function () {
+          _this.errors = '';
+        }, 2500);
       });
     }
   },

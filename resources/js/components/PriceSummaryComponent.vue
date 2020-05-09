@@ -79,6 +79,9 @@ export default {
                 this.newTotal = response.data
                 this.errors = response.message
                 // console.log(this.errors)
+                window.setTimeout(() => {
+                    this.errors = ''
+                }, 2500)
 
 
             })
