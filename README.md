@@ -43,8 +43,16 @@ Park-commerce is a light-weight application written to implement Coupon feature 
 
 ## Testing Feature
 
+### Local dev server
+
 - **Login** localhost:8000/login
 - **Cart** localhost:8000/cart
+
+
+
+### Live App URL
+
+[park-commerce.herokuapp.com](http://park-commerce.herokuapp.com/)
 
 
 ## Sample Data
