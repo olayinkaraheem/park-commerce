@@ -1,6 +1,6 @@
 # park-commerce
 
-Park-commerce is a light-weight application written to implement Coupon feature of an e-commerce product.
+Park-commerce is a light-weight application written to implement a flexible Coupon feature of an e-commerce solution.
 
 
 
